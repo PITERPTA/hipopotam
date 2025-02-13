@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hypocykloida</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+ 
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#chinczyk">Strona Główna</a></li>
+      <li><a href="#nigger">Arkusz Kalkulacyjny</a></li>
+      <li><a href="#polska">p5.js</a></li>
+      <li><a href="#kaktus">GeoGebra</a></li>
+      <li><a href="#miesko">Film</a></li>
+      <li><a href="#dupa">Python</a></li>
+    </ul>
+  </nav>
+
+  <div class="slider" id="slider">
+    <div class="slides">
+      <div class="slide"><img src="1.png" alt="o1"></div>
+      <div class="slide"><img src="2.png" alt="o2"></div>
+      <div class="slide"><img src="3.png" alt="o3"></div>
+    </div>
+  </div>
+
+  <div class="tile" id="chinczyk">
+    <div class="nikker"><p><strong>Hipocykloida</strong></p></div>
+    <p>Hipocykloida to krzywa płaska, którą tworzy punkt na obwodzie mniejszego okręgu 
+    toczącego się bez poślizgu wewnątrz większego okręgu.
+    </p>
+    <p> \begin{cases}x(t) = (R-r)\cos t + r\cos(\frac{R-r}{r}t) \\y(t)=(R-r)\sin t - r\sin(\frac{R-r}{r}t)\end{cases} </p>
+    <p>gdzie \(t\) jest parametrem opisującym ruch punktu po krzywej</p>
+  </div>
+
+  <div class="tile" id="nigger">
+    <div class="nikker"><p><strong>Okrąg</strong></p></div>
+  </div>
+
+  <div class="tile" id="polska">
+    <div class="nikker"><p><strong>Krzywe Lissajous w p5.js</strong></p></div>
+    <script>
+        // Funkcja setup, która tworzy canvas
+        function setup() {
+          let canvas = createCanvas(600, 400);  // Tworzenie canvas o wymiarach 600x400
+          canvas.parent("canvas-container"); // Załączanie canvas do kontenera o id "canvas-container"
+          noLoop(); // Tylko jedno rysowanie, bez animacji
+        }
+    
+        // Funkcja draw, która rysuje na canvas
+        function draw() {
+          background(255); // Ustawienie białego tła
+          stroke(0, 0, 255); // Ustawienie koloru konturu na niebieski
+          noFill(); // Bez wypełnienia wewnętrznego
+          beginShape(); // Początek rysowania kształtu
+          
+          let A = 200, B = 150, a = 3, b = 2, delta = PI / 2;
+          
+          // Pętla, która rysuje wykres
+          for (let t = 0; t <= TWO_PI; t += 0.01) {
+              let x = A * sin(a * t + delta) + width / 2; // Obliczanie współrzędnej x
+              let y = B * sin(b * t) + height / 2;       // Obliczanie współrzędnej y
+              vertex(x, y); // Dodanie punktu do kształtu
+          }
+          
+          endShape(); // Zakończenie rysowania kształtu
+        }
+      </script>
+</div>
+
+ 
+<div class="tile" id="kaktus">
+    <div class="nikker"><p><strong>Krzywa motylkowa</strong></p></div>
+    <a href="https://www.geogebra.org/calculator/r6pj9una"></a>
+</div>
+
+ 
+<div class="tile" id="miesko">
+    <div class="nikker"><p><strong>Spirograf</strong></p></div>
+    <video width="600" controls>
+        <source src="your-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <p>Filmik nagrany ze strony <a href="https://inspiral-web.nathanfriend.com/">https://inspiral-web.nathanfriend.com/</a></p>
+</div>
+
+
+<div class="tile" id="dupa">
+    <div class="nikker"><p><strong>Python</strong></p></div>
+
+</div>
+
+
+
+
+  <script>
+    const slides = document.querySelector('.slides');
+    const slideCount = document.querySelectorAll('.slide').length;
+    let currentIndex = 0;
+
+    function updateSlider() {
+      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function autoSlide() {
+      currentIndex = (currentIndex + 1) % slideCount;
+      updateSlider();
+    }
+
+    setInterval(autoSlide, 3000); // Slajdy zmieniają się co 3 sekundy
+  </script>
+</body>
+</html>
